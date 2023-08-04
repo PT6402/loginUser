@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\ProviderController;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -16,17 +17,17 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('dashboard');
 });
+Route::get('/home', [HomeController::class, 'index']);
+Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect']);
 
-Route::get('/auth/{provider}/redirect', [ProviderController::class,'redirect']);
-
-Route::get('/auth/{provider}/callback',[ProviderController::class,'callback']);
+Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
 Route::get('/dashboard', function () {
     return view('dashboard');
 })
-->middleware(['auth', 'verified'])
-->name('dashboard');
+    // ->middleware(['auth', 'verified'])
+    ->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -34,4 +35,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
