@@ -1,4 +1,4 @@
-<footer class="main-footer">
+<footer class="main-footer p-0">
     <!-- To the right -->
     <div class="float-right d-none d-sm-inline">
         Anything you want

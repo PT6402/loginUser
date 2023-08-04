@@ -70,6 +70,6 @@ Route::middleware('is_admin')->group(function () {
         Route::get('/delete/{id}', [UserController::class, 'destroy'])->name('admin.delete');
         Route::get('/', function () {
             return view('admin.app');
-        });
+        })->name('admin');
     });
 });
