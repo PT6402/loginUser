@@ -21,7 +21,7 @@ class IsAdmin
 
                 return $next($request);
             } else {
-                return redirect('dashboard')->with('errorAuthAdmin', 'you not admin');
+                return redirect('/')->with('errorAuthAdmin', 'you not admin');
             }
         } else {
             return redirect('/login')->with('errorLogin', 'you not login');

@@ -1,4 +1,5 @@
 <x-app-layout>
+
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Dashboard') }}
@@ -18,4 +19,17 @@
             </div>
         </div>
     </div>
+    @if (session('errorAuthAdmin'))
+        <script>
+            // $(document).ready(function() {
+            setTimeout(() => {
+
+                swal("OOPS!", "You not admin", "warning", {
+                    button: false
+                });
+            }, 500);
+            // alert("hello")
+            // });
+        </script>
+    @endif
 </x-app-layout>

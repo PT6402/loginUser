@@ -18,16 +18,16 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('dashboard');
-});
+})->name('dashboard');
 Route::get('/home', [HomeController::class, 'index']);
 Route::get('/auth/{provider}/redirect', [ProviderController::class, 'redirect']);
 
 Route::get('/auth/{provider}/callback', [ProviderController::class, 'callback']);
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})
-    // ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })
+//     // ->middleware(['auth', 'verified'])
+//     ->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

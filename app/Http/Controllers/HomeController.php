@@ -15,7 +15,7 @@ class HomeController extends Controller
             if ($is_admin == 0) {
                 return view('dashboard');
             } else if ($is_admin == 1) {
-                return view('admin.app');
+                return redirect('/admin');
             }
         } else {
             return redirect()->back();
